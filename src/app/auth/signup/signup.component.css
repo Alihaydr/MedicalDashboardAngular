@@ -1,0 +1,21 @@
+#SignUp{
+    padding: 10px 50px;
+      /* margin-right: 10px; */
+      border: 1px solid rgb(37, 47, 224);/* Add border for a 3D effect */
+      box-shadow: 0 2px 4px rgba(4, 15, 223, 0.6);  
+      /* primary-btn btn-hover w-100 text-center */
+      background: rgb(37, 47, 224);
+      color: white;
+      text-align: center;
+      /* width: 30%; */
+      transition: transform 0.1s ease;
+  }
+  
+  #SignUp:hover {
+    padding: 10px 50px;
+    border: 1px solid rgb(75, 81, 195); /* Add border for a 3D effect */
+    background: rgb(75, 81, 195);
+    transform: scale(1.01);   
+  }
+
+

@@ -1,0 +1,285 @@
+
+<!-- this one is in the main page displayed -->
+
+<div class="row">
+
+  <div class="col-lg-12">
+    <div class="card-style mb-10">
+
+      <div class="title d-flex flex-wrap align-items-center justify-content-between">
+       
+        <div *ngIf="showTitle" class="left ">
+          <h6 class="text-medium mb-30" style="color: black;">Medicines</h6>
+        </div>
+
+       
+
+        <div *ngIf="showSearch" class="left ">
+          <label>Search for a Medicine by Name</label>
+
+          <app-searchbutton (searchKey)="searchKeyEvent($event)"></app-searchbutton>
+
+        </div>
+
+        <div *ngIf="showbtn">
+          <a (click)="moveToRoute('/products/push')" class="main-btn primary-btn btn-hover mb-4">Push Product </a>
+        </div>
+
+        <!-- <div class="right" *ngIf="showDays">
+          <div class="select-style-1">
+
+            <div class="select-position select-sm">
+              <select class="light-bg">
+                <option value="today">Today</option>
+                <option value="yesterday">Yesterday</option>
+              </select>
+
+            </div>
+          </div>
+        </div> -->
+
+<!--
+        <div class="right" *ngIf="showDays" class="dropdown">
+          <button class="dropbtn">Medicines</button>
+          <div class="dropdown-content">
+            <button  (click)="AllMed()" class="btnTop">All</button>
+            <button  (click)="TodayVsYesterday('expiryNear')" class="btnTop">expiryDate</button>
+               </div>
+          </div> -->
+
+      </div>
+
+
+      <div class="table-responsive">
+        <!-- <mat-progress-bar *ngIf="showProgressBarSearch" mode="indeterminate"></mat-progress-bar> -->
+        <table class="table top-selling-table">
+
+          <thead>
+        
+            <tr>
+
+            <th *ngIf="showPic">
+              <h6 class="text-sm text-medium"></h6>
+            </th>
+
+            <th class="min-width">
+              <h6 class="text-sm text-medium">
+                Product
+              </h6>
+            </th>
+
+
+            <th class="min-width">
+              <h6 class="text-sm text-medium">
+                Location
+              </h6>
+            </th>
+
+            <th class="min-width">
+              <h6 class="text-sm text-medium">
+                Variants
+              </h6>
+            </th>
+
+            <th *ngIf="showNotes" class="min-width">
+              <h6 class="text-sm text-medium">
+                Description
+              </h6>
+            </th>
+
+            <th class="min-width">
+              <h6 id="ExpiryDateA" style="cursor: pointer;" class="text-sm text-medium" (click)="sortProductsByExpiryDate()">
+                Expiry Date <i class="lni lni-arrows-vertical"></i>
+              </h6>
+            </th>
+
+
+            <th class="min-width">
+              <h6 id="QuantityA" style="cursor: pointer;" class="text-sm text-medium" (click)="sortProductsByQuantity()">
+                Quantity <i class="lni lni-arrows-vertical"></i>
+              </h6>
+            </th>
+
+
+            <th *ngIf="showQtyinput">
+              <h6 class="text-sm text-medium text-end">
+
+              </h6>
+            </th>
+
+            <th *ngIf="showPull">
+              <h6 class="text-sm text-medium text-end">
+
+              </h6>
+            </th>
+
+            <th *ngIf="showActionBtn">
+              <h6 class="text-sm text-medium text-end">
+                Actions
+              </h6>
+            </th>
+
+            
+            <th *ngIf="showAddBtn">
+              <h6 class="text-sm text-medium text-end">
+                
+              </h6>
+            </th>
+
+          </tr>
+
+          <!-- <tr style="width: max-content;">
+            <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+          </tr> -->
+
+          </thead>
+
+          
+         
+<!-- <app-pull-products>
+          [showSection]="false"
+       (output)="BAGofMed($event)">
+</app-pull-products> -->
+
+
+          <tbody>
+          <tr *ngFor="let product of getLimitedProducts(), let i = index ">
+
+            <td *ngIf="showPic">
+              <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>pill</title><path d="M4.22,11.29L11.29,4.22C13.64,1.88 17.43,1.88 19.78,4.22C22.12,6.56 22.12,10.36 19.78,12.71L12.71,19.78C10.36,22.12 6.56,22.12 4.22,19.78C1.88,17.43 1.88,13.64 4.22,11.29M5.64,12.71C4.59,13.75 4.24,15.24 4.6,16.57L10.59,10.59L14.83,14.83L18.36,11.29C19.93,9.73 19.93,7.2 18.36,5.64C16.8,4.07 14.27,4.07 12.71,5.64L5.64,12.71Z" /></svg>
+            </td>
+
+            <td>
+              <p class="text-sm">{{product.name}}</p>
+            </td>
+
+            <td>
+              <p class="text-sm">{{product.location}}</p>
+            </td>
+
+            <td>
+              <select id="vaiantsInput" class="text-sm variantSelect">
+                <option *ngFor="let variant of product.variants">{{variant}}</option>
+              </select>
+            </td>
+
+            <td *ngIf="showNotes">
+              <div class="truncate-container">
+                <p class="truncate-text">{{product.notes}}</p>
+                <span class="tooltiptext">{{product.notes}}</span>
+              </div>
+            </td>
+            
+            
+            <td class="expiryDateIn">
+              <span class="status-btn" 
+              [ngClass]="{'close-btn':compareDate(product.expiryDate), 'success-btn':!compareDate(product.expiryDate)}" >
+              {{product.expiryDate}}</span>
+            </td>
+
+            <td>
+              <span class="status-btn"
+              *ngIf="showQty"
+              [ngClass]="{'close-btn':compareQuantity(product.quantity), 'success-btn':!compareQuantity(product.quantity)}"  >
+              {{product.quantity}}</span>
+            </td>
+
+
+            
+            <td *ngIf="showQtyinput">
+
+              <input class="qtyBTN" *ngIf="showQtyinput" [(ngModel)]="desiredQuantities[i]"
+
+                        type="number" id="quantity{{i}}" name="quantity{{i}}" min="1" [max]="product.quantity"
+                         required>
+
+                <div *ngIf="showDanger" class="text-danger"> Quantity must be greater than 1</div>
+            </td>
+
+             <!-- showMedicinesBtn -->
+            <td *ngIf="showPull">
+                <a (click)="PullMed(i, desiredQuantities[i])" 
+                   class="pullbutton"
+                   [ngClass]="{'disabled-link': product.quantity === 0 || desiredQuantities[i]>product.quantity}"> Pull </a>
+            </td>
+
+           <!-- show add btn -->
+            <td *ngIf="showAddBtn">
+             <a (click)="addedMedicines(i, product.quantity,desiredQuantities[i])" 
+                class="pullbutton" 
+                [ngClass]="{'disabled-link': product.quantity === 0 || desiredQuantities[i]>product.quantity}"> add </a>
+            </td>
+
+            <!-- <td *ngIf="showActions">
+              <div class="action justify-content-end">
+
+
+              <button class="more-btn ml-10 dropdown-toggle" id="moreAction1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                  <i class="lni lni-more-alt"></i>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
+
+                  <li class="dropdown-item">
+                    <a (click)=" deleteMedicine(i)" class="text-gray"> Remove </a>
+                  </li>
+                  <li class="dropdown-item">
+                    <a (click)="moveToRouteWithIndex('/products/update-medicine',i)" class="text-gray"> Edit </a>
+                  </li>
+                </ul>
+
+
+              </div>
+            </td> -->
+
+            <td *ngIf="showActions">
+              <div class="action">
+
+                <button (click)="moveToRouteWithIndex('/products/update-medicine',product.id)" class="edit">
+                  <i  class="lni lni-pencil"></i>
+                </button>
+
+                <button (click)="deleteMedicine(i)" class="text-danger">
+                  <i class="lni lni-trash-can"></i>
+                </button>
+
+              </div>
+               <p class="bg-danger-100" *ngIf="showProgressBar && clickedRowIndex === i">wait...</p>
+                         <!-- Add a progress bar here -->
+                <!-- <div class="progress-container" *ngIf="deletingConsumer && deletingConsumerIndex === i">
+                  <div class="progress-bar" [style.width]="deleteProgress + '%'"></div>
+                </div> -->
+            </td>
+
+
+
+          </tr>
+
+          <a id="ViewAll" *ngIf="showAllMed && !showProgressBar" (click)="moveToRoute('/products/all')"> All Medicines </a>
+
+         
+          
+        </tbody>
+
+        </table>
+
+        <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+
+        <app-paging
+                  (currentPageEvent)="currentPageEvent($event)"
+                  *ngIf="showPagging"
+                  [data]="products"
+                  [lengthArray]="allproductsLength"
+                  (dataPerPage)="onDataPerPageReceived($event)">
+
+      </app-paging>
+
+        <!-- End Table -->
+      </div>
+    </div>
+  </div>
+  <!-- End Col -->
+</div>
+<!-- End Row -->
+

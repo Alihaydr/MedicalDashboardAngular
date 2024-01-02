@@ -1,0 +1,118 @@
+
+<section class="signin-section">
+  <div class="container-fluid">
+
+    <div class="row g-0 auth-row">
+      <div class="col-lg-6">
+        <div class="auth-cover-wrapper bg-primary-100">
+          <div class="auth-cover">
+            <div class="title text-center">
+              <h1 class="text-primary mb-10">Get Started</h1>
+              <p class="text-medium">
+                Start creating the best possible user experience
+                <br class="d-sm-block" />
+                for you customers.
+              </p>
+            </div>
+            <div class="cover-image">
+              <img src="assets/images/auth/signin-image.svg" alt="" />
+            </div>
+            <div class="shape-image">
+              <img src="assets/images/auth/shape.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+      <div class="col-lg-6">
+        <div class="signup-wrapper">
+          <div class="form-wrapper">
+            <h6 class="mb-15">Sign Up Form</h6>
+            <p class="text-sm mb-25">
+              Start creating the best possible user experience for you
+              customers.
+            </p>
+            <div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Name</label>
+                    <input type="text" placeholder="Name" [(ngModel)]="username" />
+
+                    <div style="margin-left: 8%;" *ngIf="this.username == ''  && isSomethingEmpty ">
+                      <p class="text-danger">Username is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Phone Number</label>
+                    <input type="text" placeholder="PhoneNumber" [(ngModel)]="phoneNumber"/>
+                    <div style="margin-left: 8%;" *ngIf="this.phoneNumber == ''  && isSomethingEmpty ">
+                      <p class="text-danger">Phone number is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Password</label>
+                    <input type="password" placeholder="Password" [(ngModel)]="password"/>
+                    <div style="margin-left: 8%;" *ngIf="this.password == ''  && isSomethingEmpty ">
+                      <p class="text-danger">Password is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>BirthDate</label>
+                    <input type="date" [(ngModel)]="birthDay"/>
+                    <div style="margin-left: 8%;" *ngIf="this.birthDay == ''  && isSomethingEmpty ">
+                      <p class="text-danger">Birth day is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- end col -->
+
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label for="role">Role</label>
+
+                    <select id="role" [(ngModel)]="selectedRole" name="role">
+                      <option value="superAdmin">Super Admin</option>
+                      <option value="Admin">Admin</option>
+                      <option value="stocksupplier">Stock Supplier</option>
+                      <option value="stockreceiver">Stock Receiver</option>
+                    </select>
+
+                    <div style="margin-left: 8%;" *ngIf="this.selectedRole == ''  && isSomethingEmpty ">
+                      <p class="text-danger">Role is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="button-group d-flex justify-content-center flex-wrap">
+
+                    <button id="SignUp" (click)="signUp()" class="main-btn primary-btn btn-hover w-100 text-center">
+Sign Up
+                    </button>
+
+                    <mat-progress-bar style="margin-top: 2%;" *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+                    <p  class="bg-success" style="margin-top: 2%; color: white;">{{message}}</p>
+                    <p  class="bg-danger" style="margin-top: 2%; color: white;">{{error}}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- end row -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+</section>

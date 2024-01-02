@@ -1,0 +1,268 @@
+
+
+/* variant select in table */
+#vaiantsInput{
+  max-width: 120px;
+  color: black;
+  background-color: rgb(247, 247, 247);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+#vaiantsInput:hover{
+  max-width: 120px;
+  color: black;
+  background-color: rgb(223, 223, 244);
+}
+
+/* Optional: Add hover effect */
+.text-sm.variantSelect:hover {
+  border-color: #e9e7e7;
+}
+
+/* Optional: Add focus effect */
+.text-sm.variantSelect:focus {
+  outline: none;
+  border-color: blue; /* Change to your desired focus color */
+  box-shadow: 0 0 5px rgba(0, 98, 195, 0.5); /* Change to your desired focus shadow */
+}
+
+
+
+
+
+
+
+
+
+
+.disabled-link {
+  color: rgb(130, 130, 130); /* You can set the color to visually indicate it's disabled */
+  pointer-events: none; /* Disable click events */
+  cursor: not-allowed; /* Change cursor to indicate not clickable */
+}
+
+
+/* pull link in table */
+
+.pullbutton {
+  cursor: pointer;
+  padding: 10px 50px;
+  margin-right: 10px;
+  transition: transform 0.2s ease;
+}
+
+.pullbutton:hover {
+  /* cursor: pointer; */
+  color: blue;
+  transform: scale(1.04);
+  text-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
+}
+
+
+.variantSelect {
+  width: 100%;
+  background: rgba(239, 239, 239, 0.5);
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 16px;
+  color: #5d657b;
+  resize: none;
+  transition: all 0.3s;
+}
+
+.table {
+  padding: 5px;
+}
+
+.qtyBTN {
+  max-width: 50px;
+}
+
+/* app.component.css */
+
+mat-paginator {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+/* .pullbutton{
+  cursor: pointer;
+  color: rgb(128, 128, 132);
+}
+
+.pullbutton:hover{
+  color: rgb(2, 2, 206);
+
+} */
+
+
+#ViewAll {
+  color: blue;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+#ViewAll:hover {
+ /* cursor: pointer; */
+ color: blue;
+ transform: scale(1.04);
+ text-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
+}
+
+
+#ExpiryDateA:hover, #QuantityA:hover{
+  color: rgb(5, 5, 188);
+}
+
+
+
+
+
+
+/* Custom CSS for animation */
+.btnTop {
+  animation: fadeInDown 0.3s ease-out; /* Adjust the animation duration as needed */
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+
+.btnTop:hover {
+  border-color: #d4d4d4e8;
+  background-color: #d4d4d4e8;
+  color: blue;
+}
+
+.btnTop {
+  display:block;
+  width:100%;
+  margin-right: 10px;
+  border-radius: 5px;
+  background-color: #a6b8a715;
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* Style The Dropdown Button */
+.dropbtn {
+  margin-right: 10px;
+  border-radius: 5px;
+  background-color: #a6b8a715;
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover {
+ color: blue;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover
+ {background-color: #eaeaeae8;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color:#eaeaeae8;
+}
+
+/* Add this style to your component's CSS file or your global styles */
+
+.qtyBTN {
+  width: 50px; /* Set the width according to your preference */
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Optionally, you can add some styles for better visibility when focused or hovered */
+.qtyBTN:focus,
+.qtyBTN:hover {
+  border-color: #007bff;
+  outline: none; /* Remove the default outline on focus */
+}
+
+
+
+
+
+
+
+
+/* Default styles for truncate text */
+.truncate-container .truncate-text {
+  max-width: 8ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tooltip container */
+.truncate-container .tooltiptext {
+  visibility: hidden;
+  width: max-content; /* Adjusted for dynamic width based on content */
+  max-width: 300px; /* Set a maximum width for the tooltip */
+  background-color: #d9d9d9;
+  color: #000000;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added a box shadow for better visibility */
+  
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Adjusted to position the tooltip a bit higher */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Show the tooltip text when you hover over the truncate container */
+.truncate-container:hover .tooltiptext {
+  visibility: visible;
+}

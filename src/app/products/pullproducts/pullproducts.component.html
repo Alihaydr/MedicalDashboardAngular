@@ -1,0 +1,288 @@
+
+<app-first-section item_active="Pull Medicine"></app-first-section>
+
+
+  <section  class="tab-components">
+    <div class="container-fluid">
+
+      <div class="form-elements-wrapper">
+        <div class="row">
+
+          <div class="col-lg-5">
+
+
+            <div id="choosenMedCrad" class="card-style" *ngFor="let med of MedicinesBag; let i = index">
+             
+              <div class="input-style-1">
+
+                <div class="product-name-toggle-container">
+
+                  <input id="nameInput" type="text" [disabled]="true" [placeholder]="med.name" />
+
+                  <input class="qtyBTN" type="number" id="quantity" name="quantity" [min]="1" [max]="med.allQty"
+                         placeholder="{{ med.desiredQuantity }}" [step]="1" [(ngModel)]="med.desiredQuantity">
+
+
+                  <div class="toggle-box" (click)="toggleDetails(i)">
+                    <span class="dropdown-indicator">▼</span>
+
+                    <span class="clearbutton" (click)="deleteMedicineBag(i)">x</span>
+                  </div>
+
+                </div>
+
+
+
+                <div class="details-box" [ngClass]="{'active': med.showDetails}">
+          
+                  <div class="select-style-1">
+                    <label>Variant</label>
+                    <div class="select-position">
+                      <select>
+                        <option *ngFor="let variant of med.variants; let i = index" [selected]="i === 0">{{variant}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="input-style-1">
+                    <label>Location</label>
+                    <input type="text" [disabled]="true" min="0" max="7" placeholder="0" [value]="med.location" />
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+
+            <a (click)="addNewMedButtonClicked()" id="medicineButton" type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Add new Medicine
+             </a>
+
+
+            <div style="margin-left: 8%;"
+                 *ngIf="MedicinesBag.length == 0  && isSomethingEmpty ">
+              <p class="text-danger">At lease select one item.</p>
+            </div>
+<!-- ========== end for left column ========== -->
+          </div>
+
+
+<!-- ========== start of right column ========== -->
+          <div class="col-lg-7">
+
+           <!-- ======= Patient Report ======= -->
+            <div class="card-style mb-30">
+              <div class="col-lg-12">
+                  <label class="label">Upload patient report</label>
+                  <div class="custom-uploader"> <input type="file" (change)="handleFileInput($event)" accept=".docx,.pdf,image/*" />         </div>
+              </div>
+
+              <div style="margin-left: 8%;"
+                   *ngIf="reportFileName == ''  && isSomethingEmpty ">
+                <p class="text-danger">Report is required.</p>
+              </div>
+            </div>
+
+            <div class="card-style mb-30">
+
+              <div class="input-style-1">
+                <label style="color: blue;">Consumers</label>
+                <label>Search for a consumer by phone number</label>
+
+                <div class="d-flex justify-content-between">
+                  <app-searchbutton (searchKey)="searchKeyEvent($event)"></app-searchbutton>
+                  <button id="AddNewConsumerBtn" (click)="goToAddConsumerPage()" class="main-btn">Add new</button>
+                </div>
+
+
+
+              </div>
+
+              <app-consumers-pull (consumerId)="consumerIdEvent($event)" [searchKey]="phoneNumberSearchKey"></app-consumers-pull>
+
+              <div style="margin-left: 8%;"
+                   *ngIf="consumerId == 0  && isSomethingEmpty ">
+                <p class="text-danger">At lease select one consumer.</p>
+              </div>
+            </div>
+
+
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 1%;">
+
+              <button (click)="insertProduct()" id="pullButton" type="button" class="btn btn-primary">
+                Pull Product
+              </button>
+
+
+
+        </div>
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- end col -->
+
+          <mat-progress-bar style="margin-top: 2%;" *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+          <p  class="bg-success" style="margin-top: 2%; color: white;">{{message}}</p>
+          <p  class="bg-danger" style="margin-top: 2%; color: white;">{{error}}</p>
+        </div>
+        <!-- end row -->
+
+    </div>
+    </div>
+
+  </section>
+
+  <!-- Modal -->
+<div class="modal-dialog">
+    <!-- Modal -->
+    <div class="modal fade modal-fullscreen" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+      <div id="openModal" class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content mb-30">
+
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add new Medicine</h5>
+            <button (click)="unSaveChanges()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+
+
+    <!--  here is the modal  -->
+<div class="modal-body">
+
+            <div id="Divider" class="col-lg-12">
+
+              <div id="medicinesComponent" class="col-lg-9">
+
+
+    <app-products-component
+                     *ngIf="openModal"
+                 
+                    [temparrayy]="temp"
+                    [MainQuantity]="mainQtyArray"
+                    
+                    [tempArray]="MedicinesBag"
+                    [showbtn]="false"
+                    [showActions]="false"
+                    [showSearch]="true"
+                    [showDays]="false"
+                    [showPagging]="true"
+                    [showPic]="false"
+                    [showPull]="false"
+                    [showActionBtn]="false"
+                    [showAddBtn]="true"
+                    [showAllMed]="false"
+                    [showQtyinput]="true"
+                    [showQty]="true"
+                    [showNotes]="false"
+                    [limit]="10"
+                    [deletedMedFromPull]="deletedMed"
+                    
+                    (output)="BAGofMed($event)" 
+                    (event)="catchDesiredArray($event)" 
+                    (eventQty)="catchMainQtyArray($event)" 
+
+                    >
+
+    </app-products-component>
+
+
+            </div>
+
+
+
+    <!-- this is the table of the selected medicines -->
+  <div id="TableSelectedMedicines" class="col-lg-3">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card-style mb-30">
+          <div class="title d-flex flex-wrap align-items-center justify-content-between">
+
+            <!-- <div class="left ">
+              <h6 class="text-medium mb-30">Selected Medicines </h6>
+            </div>
+          -->
+          </div>
+          <div class="table-responsive">
+
+            <table class="table top-selling-table">
+
+          <thead>
+              <tr>
+                <th>
+                  <h6 id="title1" class="text-sm text-medium">Selected Medicines</h6>
+                </th>
+
+                <th> <h6 id="title1" class="text-sm text-medium"></h6></th>
+
+                <th> <h6 id="title1" class="text-sm text-medium"></h6></th>
+
+              </tr>
+          </thead>
+
+          <tbody *ngFor="let MedicinesBags of AddedMedicin, let i = index">
+
+
+            <tr> 
+              <td>{{MedicinesBags.name}}</td>
+              <td>{{MedicinesBags.desiredQuantity}}</td>
+
+              <td>
+              <div class="clearbutton-container">
+                    <span (click)="deleteMedicine(i)" style="font-size: 20px; cursor: pointer;" class="ms-3 clearbutton">x</span>
+              </div>
+            </td>
+
+            </tr>
+
+          </tbody>
+
+            </table>
+
+            <!-- End Table -->
+          </div>
+        </div>
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
+
+              </div>
+    <!-- end of selected medicines table -->
+
+
+            </div>
+
+
+          </div>
+
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+            <button id="SaveBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close" (click)="saveChanges()">Save changes</button>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+</div>
+
+

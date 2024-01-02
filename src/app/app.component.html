@@ -1,0 +1,26 @@
+
+<app-signin (isShowSign)="isShowSignEvent($event)" *ngIf="showSignIn"></app-signin>
+
+<div *ngIf="!showSignIn">
+  <app-navbar></app-navbar>
+
+  <main class="main-wrapper">
+    <!-- ========== header start ========== -->
+    <app-header></app-header>
+
+    <!-- ========== header end ========== -->
+
+    <section class="section">
+      <div class="container-fluid">
+        <!-- ========== title-wrapper start ========== -->
+        <router-outlet></router-outlet>
+      </div>
+    </section>
+    <!-- ========== section end ========== -->
+
+    <!-- ========== footer start =========== -->
+    <!-- ========== footer end =========== -->
+    <app-footer></app-footer>
+
+  </main>
+</div>

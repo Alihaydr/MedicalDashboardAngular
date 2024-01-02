@@ -1,0 +1,114 @@
+<app-first-section item_active="Push Transactions"></app-first-section>
+
+<div class="row">
+    <div class="col-lg-12">
+      <div class="card-style mb-30">
+        <div class="d-flex  justify-content-between">
+          <div>
+            <label>Search for a Transaction by Name</label>
+            <app-searchbutton (searchKey)="searchKeyEvent($event)"></app-searchbutton>
+          </div>
+           </div>
+
+        <div class="table-wrapper table-responsive">
+
+          <table class="table">
+            <thead>
+            <tr>
+              <th>
+                <h6 id="idA" style="cursor: pointer;" class="text-sm text-medium" (click)="sortByID()">
+                  ID <i class="lni lni-arrows-vertical" ></i>
+                </h6>
+              </th>
+              <th>
+                <h6>Item</h6>
+              </th>
+              <th>
+                <h6>User</h6>
+              </th>
+              <th>
+                <h6 id="QtyA" style="cursor: pointer;" class="text-sm text-medium" (click)="sortByQuantity()">
+                  Quantity <i class="lni lni-arrows-vertical" ></i>
+                </h6>
+              </th>
+
+              <th>
+                <h6>Status</h6>
+              </th>
+              <th>
+                <h6 id="dateA" style="cursor: pointer;" class="text-sm text-medium" (click)="sortByDate()">
+                  Date <i class="lni lni-arrows-vertical" ></i>
+                </h6>
+              </th>
+              <!-- <th>
+                <h6>Action</h6>
+              </th> -->
+            </tr>
+            <!-- end table row-->
+            </thead>
+
+
+            <tbody>
+            <tr *ngFor="let transaction of transactionsPush, let i = index">
+              <td class="min-width">
+                <p>{{transaction.id}}</p>
+              </td>
+
+              <td class="min-width">
+                <p>{{transaction.item.name}}</p>
+              </td>
+
+              <td class="min-width">
+                <p><a href="#0">{{transaction.user.adminName}}</a></p>
+              </td>
+
+              <td class="min-width">
+                <p>{{transaction.item.pullQuantity}}</p>
+              </td>
+
+              <td class="min-width">
+                <span class="status-btn active-btn">{{transaction.transactionType}}</span>
+              </td>
+
+              <td class="min-width">
+                <p>{{transaction.transactionDate}}</p>
+              </td>
+
+              <!-- <td>
+                <div class="action">
+
+                  <button (click)="moveToRouteWithIndex('/transactions/push-update',i)" class="edit">
+                    <i  class="lni lni-pencil"></i>
+                  </button>
+
+                   <button (click)="deleteTransaction(i)" class="text-danger">
+                    <i class="lni lni-trash-can"></i>
+                  </button> 
+
+                </div>
+              </td> -->
+
+            </tr>
+
+            <a id="ViewAll" *ngIf="showAll" (click)="moveToRoute('/transactions/push-update')">View All </a>
+           <!-- end table row -->
+            <!-- end table row -->
+            </tbody>
+          </table>
+
+
+          <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+
+          <app-paging
+          (currentPageEvent)="currentPageNumberEvent($event)"
+          [data]="transactionsPush"
+           [lengthArray]="allTransactionPushCount"
+           (dataPerPage)="onDataPerPageReceived($event)"> </app-paging>
+          <!-- end table -->
+        </div>
+      </div>
+      <!-- end card -->
+    </div>
+    <!-- end col -->
+  </div>
+  <!-- end row -->

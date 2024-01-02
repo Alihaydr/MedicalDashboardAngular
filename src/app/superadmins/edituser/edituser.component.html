@@ -1,0 +1,83 @@
+
+<app-first-section item_active="Update User"></app-first-section>
+
+
+        <div class="container-fluid">
+
+          <div class="form-elements-wrapper">
+            <div class="row">
+              <div class="col-lg-10">
+                <!-- input style start -->
+                <div class="card-style mb-30">
+
+
+                    <div class="input-style-1">
+                        <label>User Name</label>
+                        <input type="text"  [(ngModel)]="user.username"/>
+                      <div style="margin-left: 8%;" *ngIf="this.user.username == ''  && isSomethingEmpty ">
+                        <p class="text-danger">Username is required.</p>
+                      </div>
+                      </div>
+
+                      <div class="input-style-1">
+                        <label>Password</label>
+                        <input type="text" minlength="8" placeholder="Enter new password"  [(ngModel)]="user.password"/>
+                        <div style="margin-left: 8%;" *ngIf="this.user.password == ''  && isSomethingEmpty ">
+                          <p class="text-danger">Password is required.</p>
+                        </div>
+                      </div>
+
+                      <div class="input-style-1">
+                        <label>Phone Number</label>
+                        <input type="text"  [(ngModel)]="user.phoneNumber" />
+                        <div style="margin-left: 8%;" *ngIf="this.user.phoneNumber == ''  && isSomethingEmpty ">
+                          <p class="text-danger">Phone number is required.</p>
+                        </div>
+                      </div>
+
+                      <div class="input-style-1">
+                        <label>Birth day</label>
+                        <input type="date" [(ngModel)]="user.birthDay"/>
+
+                        <div style="margin-left: 8%;" *ngIf="this.user.birthDay == ''  && isSomethingEmpty ">
+                          <p class="text-danger">Birth day is required.</p>
+                        </div>
+                      </div>
+
+                      <div class="input-style-1">
+                        <label for="select1">Role</label>
+                        <select id="select1" class="text-sm variantSelect" [(ngModel)]="user.role">
+                            <option>admin</option>
+                            <option>superadmin</option>
+                            <option>stocksupplier</option>
+                            <option>stockreciever</option>
+                          </select>
+
+                        <div style="margin-left: 8%;" *ngIf="this.user.role == ''  && isSomethingEmpty ">
+                          <p class="text-danger">Role is required.</p>
+                        </div>
+                      </div>
+
+
+                      <div style="display: flex; align-items: center; justify-content: center; margin-top: 2%;">
+                        <a id="editUserBtn" class="main-btn" (click)="updateUser()"> Update User </a>
+                    </div>
+                  <mat-progress-bar style="margin-top: 2%;" *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+                  <p  class="bg-success" style="margin-top: 2%; color: white;">{{message}}</p>
+                  <p  class="bg-danger" style="margin-top: 2%; color: white;">{{error}}</p>
+
+
+                </div>
+
+              </div>
+              <!-- end col -->
+
+              <!-- end col -->
+            </div>
+            <!-- end row -->
+
+
+
+
+          </div>
+        </div>

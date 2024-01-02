@@ -1,0 +1,120 @@
+<app-first-section item_active="All Users"></app-first-section>
+
+<div class="row">
+    <div class="col-lg-12">
+      <div class="card-style mb-10">
+        <div class="d-flex  justify-content-between">
+
+          <!-- <a style="margin-top: 1%;" routerLink="/auth/signup">Add new user</a> -->
+          <div>
+            <!-- <h6 class="mb-10">All Users</h6> -->
+
+            <!-- <div class="dropdown">
+              <button class="dropbtn">Users</button>
+              <div class="dropdown-content">
+                <button (click)="AllUsers()" class="btnTop">All</button>
+                <button (click)="UserType('admin')"  class="btnTop">Admin</button>
+                <button (click)="UserType('superadmin')" class="btnTop">SuperAdmin</button>
+              </div>
+              </div> -->
+
+                <button (click)="moveTAddWithRole()" class="addNewBtn">ADD NEW</button>
+
+
+
+            <p class="text-sm mb-20">
+              <!-- For basic styling—light padding and only horizontal dividers—use the class table. -->
+            </p>
+          </div>
+
+
+        </div>
+
+        <div class="table-wrapper table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th> 
+                <h6 id="idA" style="cursor: pointer;" (click)="sortByID()">
+                  ID <i class="lni lni-arrows-vertical" ></i>
+                </h6>  
+              </th>
+
+
+              <th> <h6>Username</h6> </th>
+              <th> <h6>Birth-Date</h6> </th>
+              <th> <h6>Phone-Number</h6> </th>
+              <th> <h6>Role</h6> </th>
+              <th> <h6>Actions</h6> </th>
+
+            </tr>
+
+            <!-- end table row-->
+            </thead>
+            <tbody>
+           
+           <tr *ngFor="let user of users, let i = index">
+          
+              <td class="min-width">
+                <p>{{user.id}}</p>
+              </td>
+
+              <td class="min-width">
+                <p>{{user.username}}</p>
+              </td>
+
+              <td class="min-width">
+                <p>{{user.birthDay}}</p>
+              </td>
+
+              <td class="min-width">
+                <p>{{user.phoneNumber}}</p>
+              </td>
+
+              <td class="min-width">
+                <span class="status-btn active-btn">{{user.role}}</span>
+              </td>
+
+              <td>
+                <div class="action">
+
+                  <button (click)="moveToRouteWithIndex('/SuperAdmin/edit',users[i].id)" class="edit">
+                    <i  class="lni lni-pencil"></i>
+                  </button>
+
+                  <button class="text-danger" (click)="deleteUser(users[i].id,i)">
+                    <i class="lni lni-trash-can"></i>
+                  </button>
+
+                </div>
+
+                <p class="bg-danger-100" *ngIf="showProgressBar && clickedRowIndex === i">wait...</p>
+              </td>
+
+            </tr>
+
+           <!-- end table row -->
+            <!-- end table row -->
+            </tbody>
+          </table>
+
+          <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+
+          <!-- end table -->
+        </div>
+      </div>
+      <!-- end card -->
+    </div>
+    <!-- end col -->
+  </div>
+  <!-- end row -->
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+

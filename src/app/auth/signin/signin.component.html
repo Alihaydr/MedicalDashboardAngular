@@ -1,0 +1,92 @@
+
+
+<!-- ========== signin-section start ========== -->
+<section class="signin-section" >
+  <div class="container-fluid" >
+
+    <div class="row g-0 auth-row" style="height: max-content;">
+      <div class="col-lg-6">
+        <div class="auth-cover-wrapper bg-primary-100">
+          <div class="auth-cover">
+            <div class="title text-center">
+              <h1 class="text-primary mb-10">Welcome Back</h1>
+              <p class="text-medium">
+                Sign in to your Existing account to continue
+              </p>
+            </div>
+            <div class="cover-image">
+              <img src="./assets/images/auth/signin-image.svg" alt="" />
+            </div>
+            <div class="shape-image">
+              <img src="`1./assets/images/auth/shape.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+      <div class="col-lg-6">
+        <div class="signin-wrapper">
+          <div class="form-wrapper">
+            <h6 class="mb-15">Sign In Form</h6>
+            <p class="text-sm mb-25">
+              Start creating the best possible user experience for you
+              customers.
+            </p>
+            <form [formGroup]="myForm">
+              <div class="row">
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Username</label>
+                    <input type="text" formControlName="username"
+                     placeholder="Username"  (input)="onFieldChange('username', myForm.get('username')?.value)"/>
+
+                     <div style="margin-left: 8%;" *ngIf="myForm.get('username')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">Username is required.</p>
+                    </div>
+                  </div>
+
+
+                </div>
+
+                <div class="col-12">
+                  <div class="input-style-1">
+                    <label>Password</label>
+                    <input type="password" formControlName="password"
+                    placeholder="Password" (input)="onFieldChange('password', myForm.get('password')?.value)"/>
+
+                    <div style="margin-left: 8%;" *ngIf="myForm.get('password')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">Password is required.</p>
+                    </div>
+                  </div>
+
+
+                </div>
+
+                <!-- end col -->
+                <div class="col-12">
+                  <div class="button-group d-flex justify-content-center flex-wrap">
+                    <button (click)="signIn()" class="main-btn">
+                      Sign In
+                    </button>
+
+                    <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+
+                  </div>
+                </div>
+              </div>
+              <!-- end row -->
+            </form>
+
+
+          </div>
+        </div>
+
+        <p id="errorMsg" *ngIf="showErrorMessage">Error</p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+

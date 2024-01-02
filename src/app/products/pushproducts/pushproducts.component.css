@@ -1,0 +1,311 @@
+.container-fluid{
+  width: 100%; 
+  height: 100%;
+ margin: 0;
+ padding: 0;
+ overflow: hidden;
+   }
+ 
+   * {
+    box-sizing: border-box;
+  }
+
+.select-position {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    gap: 10px; /* Adjust the gap between the select and button */
+}
+
+
+
+/* delete btn (x) */
+
+ .clearbutton-container {
+    display: inline-block;
+  } 
+  
+  .clearbutton {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+  }
+  
+  .clearbutton:hover {
+    background-color: #ffcccc;
+  }
+  
+
+
+
+  /* buttons */
+
+#addVariant{
+    padding: 5px 30px;
+    border: 1px solid rgb(37, 47, 224);/* Add border for a 3D effect */
+    box-shadow: 0 2px 4px rgba(4, 15, 223, 0.6);  
+    background: rgb(37, 47, 224);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 0.1s ease;
+}
+
+#addVariant:hover {
+  border: 1px solid rgb(75, 81, 195); /* Add border for a 3D effect */
+  background: rgb(75, 81, 195);
+  transform: scale(1.01);   
+}
+
+
+
+#addCategory{
+  padding: 5px 30px;
+  border: 1px solid rgb(37, 47, 224);/* Add border for a 3D effect */
+  box-shadow: 0 2px 4px rgba(4, 15, 223, 0.6);  
+  background: rgb(37, 47, 224);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  transition: transform 0.1s ease;
+  height: 60px;
+  width: 120px;
+}
+
+#addCategory:hover {
+border: 1px solid rgb(75, 81, 195); /* Add border for a 3D effect */
+background: rgb(75, 81, 195);
+transform: scale(1.01);   
+}
+
+
+#pushBtn{
+      padding: 10px 50px;
+      border-radius: 10px;
+      border: 1px solid rgb(37, 47, 224);/* Add border for a 3D effect */
+      box-shadow: 0 2px 4px rgba(4, 15, 223, 0.6);  
+      background: rgb(37, 47, 224);
+      color: white;
+      text-align: center;
+      transition: transform 0.1s ease;
+  }
+  
+#pushBtn:hover {
+    border: 1px solid rgb(75, 81, 195); /* Add border for a 3D effect */
+    background: rgb(75, 81, 195);
+    transform: scale(1.01);   
+  }
+
+
+
+
+
+
+
+
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+.form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 20px; /* Adjust the padding as needed */
+  }
+  
+.arrow-down {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000; /* Adjust the color as needed */
+    pointer-events: none;
+  }
+  
+.form-select:focus + .arrow-down {
+    border-top-color: blue; /* Change color to blue when the select is focused */
+  }
+
+
+
+
+
+
+/* 
+  .dropdown-submenu {
+    position: relative;
+  }
+  
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  } */
+
+
+  
+
+  .input-group  {
+    display: flex;
+
+  }
+
+  /* the qty */
+.input-group .form-control{
+width: 60%;
+}
+
+.input-group .custom-select-wrapper, .main-btn {
+  width: 20%;
+  }
+  
+
+
+
+
+
+  
+/* Adjust the styles for the selected dosages and categories  */
+
+.row ul li {
+  border-style: solid;
+  border-radius: 10px;
+  background-color: aliceblue;
+  border-color: aliceblue;
+  padding: 6px;
+  margin-top: 4px;
+  color: blue;
+}
+
+.clearbutton-container{
+  display: inline;
+  float: inline-end;
+  align-items: center;
+}
+
+
+
+.row{
+  padding: 0;
+  margin: 0;
+
+}
+
+
+
+/* responsive css */
+
+
+@media only screen and (max-width: 1577px) {
+
+  #addCategory{
+    padding: 10px;
+    font-size: 15px;
+    height: 60px;
+    width: 100px;
+  }
+
+}
+
+
+
+@media only screen and (max-width: 1421px) {
+
+  #addCategory{
+    padding: 10px;
+    font-size: 15px;
+    height: 50px;
+    width: 80px;
+  }
+
+}
+
+
+
+@media only screen and (max-width: 1300px) {
+
+  #addCategory{
+    height: 50px;
+    width: 70px;
+  }
+
+  #addVariant{
+    padding: 10px;
+    font-size: 15px;
+  }
+
+}
+
+
+
+
+@media only screen and (max-width: 988px) {
+
+  #addCategory{
+    height: 60px;
+    width: 120px;
+  }
+
+}
+
+@media only screen and (max-width: 559px) {
+
+  #addCategory{
+    height: 50px;
+    width: 70px;
+  }
+
+.categoryName .row {
+    display: flex;
+    width: fit-content;
+  } 
+
+}
+
+
+@media only screen and (max-width: 780px) {
+
+
+  #addCategory{
+    height: 50px;
+    width: 100px;
+  }
+
+  .input-group .form-control {
+    width: 40%;
+    }
+
+  .modal-dialog{
+    width: 95%;
+    max-width: none;
+}
+
+#addCategory{
+  padding: 5px;
+}
+
+#addVariant{
+  padding: 10px;
+   font-size: 15px;
+}
+
+
+.row ul .col-8{
+  width: 100%;
+}
+
+
+}

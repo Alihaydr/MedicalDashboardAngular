@@ -1,0 +1,173 @@
+<!-- End Row -->
+
+
+
+<div class="row">
+
+    <div class="col-lg-12">
+      <div class="card-style mb-30">
+        <div class="title d-flex flex-wrap align-items-center justify-content-between">
+          <div class="left">
+            <h6 *ngIf="showTitle" class="text-medium mb-30">Consumers</h6>
+
+
+<div *ngIf="showPaging">
+            <label>Search for a Consumer by Name</label>
+            <app-searchbutton (searchKey)="searchKeyEvent($event)"></app-searchbutton>
+ </div>
+
+        </div>
+          <!-- <div class="right">
+            <div class="select-style-1">
+              <div class="select-position select-sm">
+                <select class="light-bg">
+                  <option value="">Today</option>
+                  <option value="">Yesterday</option>
+                </select>
+              </div>
+            </div>
+          </div> -->
+
+
+        </div>
+        <!-- End Title -->
+        <div class="table-responsive">
+          <table class="table top-selling-table">
+            <thead>
+            <tr>
+
+              <th class="min-width">
+                <h6 class="text-sm text-medium"></h6>
+              </th>
+
+              <th class="min-width">
+                <h6 class="text-sm text-medium">
+                  Name
+                </h6>
+              </th>
+
+              <th class="min-width">
+                <h6 class="text-sm text-medium">
+                  Phone-Number
+                </h6>
+              </th>
+
+              <th class="min-width">
+                <h6 id="DateA" style="cursor: pointer;" class="text-sm text-medium" (click)="sortByBirthDate()">
+                  Birth-Date <i class="lni lni-arrows-vertical" ></i>
+                </h6>
+              </th>
+
+              <th class="min-width">
+                <h6 class="text-sm text-medium">
+                  Documents
+                </h6>
+              </th>
+
+
+              <!-- <th class="min-width">
+                <h6 class="text-sm text-medium">
+                  items
+                </h6>
+              </th> -->
+
+              <th>
+                <h6 class="text-sm text-medium text-end">
+                  Actions
+                </h6>
+              </th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let consumer of getLimitedconsumers(), let i = index " (click)="navigateToDetails(consumer.id)" class="clickable-row">
+
+              <td>
+                    <svg width="30" height="30"
+                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>folder-account-outline</title><path d="M15 14C16.33 14 19 14.67 19 16V17H11V16C11 14.67 13.67 14 15 14M15 13C16.11 13 17 12.11 17 11S16.11 9 15 9C13.9 9 13 9.89 13 11C13 12.11 13.9 13 15 13M22 8V18C22 19.11 21.11 20 20 20H4C2.9 20 2 19.11 2 18V6C2 4.89 2.9 4 4 4H10L12 6H20C21.11 6 22 6.9 22 8M20 8H4V18H20V8Z" /></svg>
+              </td>
+              <td>
+                <p class="text-sm">{{consumer.name}}</p>
+              </td>
+
+                <td>
+                  <p class="text-sm">{{consumer.phoneNumber}}</p>
+               </td>
+
+                <td>
+                <p class="text-sm">{{consumer.birthdate}}</p>
+              </td>
+
+
+              <td >
+                <a *ngIf="consumer.documents" style="cursor: pointer"
+                class="text-sm" target="_blank" [href]="consumer.documents">documents</a>
+              </td>
+
+              <!-- <td>
+                <select class="text-sm variantSelect">
+                  <option>medicin 1</option>
+                  <option>medicin 2</option>
+                  <option>medicin 3</option>
+                </select>
+              </td>
+
+
+
+              </td> -->
+
+               <!-- <td>
+                <span class="status-btn " [ngClass]="{'success-btn':true}" >2023-11-10T08:30:00</span>
+              </td> -->
+
+              <td>
+                <div class="action justify-content-end">
+
+                  <button (click)="moveToRouteWithIndex('/consumers/update-consumer',consumer.id)" class="edit">
+                    <i  class="lni lni-pencil"></i>
+                  </button>
+
+                  <button (click)="deleteConsumer(i)" class="text-danger">
+                    <i class="lni lni-trash-can"></i>
+                  </button>
+
+                <!-- Add a progress bar here -->
+                <!-- <div class="progress-container" *ngIf="deletingConsumer && deletingConsumerIndex === i">
+                  <div class="progress-bar" [style.width]="deleteProgress + '%'"></div>
+                </div> -->
+                </div>
+                <p class="bg-danger-100" *ngIf="showProgressBar && clickedRowIndex === i">wait...</p>
+              </td>
+
+
+              <!-- <mat-progress-bar style="margin-top: 2%;" *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+              <p class="bg-success" style="margin-top: 2%; color: white;">{{message}}</p>
+              <p class="bg-danger" style="margin-top: 2%; color: white;">{{error}}</p> -->
+            </tr>
+
+
+            <a id="ViewAll" *ngIf="!showPaging && !showProgressBar" (click)="moveToRoute('/consumers/all')">View All</a>
+
+
+            </tbody>
+          </table>
+          <!-- End Table -->
+
+        </div>
+
+        <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+
+        <app-paging *ngIf="showPaging"
+
+                    [data]="consumers"
+                    [lengthArray]="consumerLength"
+
+                    (dataPerPage)="onDataPerPageReceived($event)"
+                    (currentPageEvent)="currentPageEvent($event)"
+                    ></app-paging>
+
+      </div>
+    </div>
+    <!-- End Col -->
+  </div>

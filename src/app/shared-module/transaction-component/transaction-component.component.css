@@ -1,0 +1,37 @@
+#ViewAll {
+    color: blue;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  #ViewAll:hover {
+ /* cursor: pointer; */
+ color: blue;
+ transform: scale(1.04);
+ text-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
+  }
+
+
+
+#dateA:hover, #QtyA:hover, #idA:hover{
+  color: rgb(5, 5, 188);
+}
+
+/* Styling for the dropdown arrow button */
+/*.dropdown-toggle {*/
+/*  background: none;*/
+/*  border: none;*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*!* Styling to show/hide additional items *!*/
+/*tr:not(.show-details) {*/
+/*  display: none;*/
+/*}*/
+
+/*.show-details {*/
+/*  display: table-row;*/
+/*}*/
+
+

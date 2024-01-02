@@ -1,0 +1,102 @@
+.overlay {
+  /* Styles for the overlay, covering the entire page */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  z-index: 1000; /* ensure it's above the sidebar */
+  display: none; /* initially hidden */
+}
+
+.sidebar-nav-wrapper.open + .overlay {
+  display: block; /* show the overlay when the sidebar is open */
+}
+
+
+
+
+
+@media (max-width: 768px) {
+ 
+ /* #logoImg {
+  width: 130px;
+} */
+  }
+  
+
+
+a img{
+  /* width: fit-content;
+  height: fit-content; */
+  margin-top: -20px; 
+  margin-left: 1px;
+  width: 160px;
+  height: 160px;
+  margin-bottom: -10px;
+}
+
+
+.sidebar-nav a.active{
+  color: #000000; /* Text color for active link */
+  border-style: none; 
+}
+
+.sidebar-nav ul li a.active{
+  color: #000000; /* Text color for active link */
+  border-style: none; 
+}
+
+.sidebar-nav .icon.active{
+  color: blue; /* Text color for active link */
+  border-style: none; 
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #333; /* Default text color for links */
+}
+
+.sidebar-nav a:hover{
+  color: black; /* Gray color on hover */
+}
+
+
+
+
+
+
+
+
+
+.sidebar {
+  background: coral;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100vh;
+  animation-name: sider;
+  animation-duration: 800ms;
+  transform-origin: top left;
+}
+
+* {
+  text-align: right;
+}
+
+@keyframes sider {
+  from {
+    transform: scaleX(0.0);
+    opacity: 0.7;
+    border-radius: 0 50% 50% 0;
+  }
+  to {
+    transform: scaleX(1.0);
+    opacity: 1.0;
+    border-radius: 0;
+  }
+}

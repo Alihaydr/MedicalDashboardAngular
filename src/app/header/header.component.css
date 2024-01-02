@@ -1,0 +1,20 @@
+      #menu-toggle {
+          border: 1px solid rgb(37, 47, 224);/* Add border for a 3D effect */
+          box-shadow: 0 2px 4px rgba(4, 15, 223, 0.6);  
+          background: rgb(37, 47, 224);
+          color: white;
+          text-align: center;
+          transition: transform 0.1s ease;
+      }
+
+      #menu-toggle:hover {
+        border: 1px solid rgb(75, 81, 195); /* Add border for a 3D effect */
+        background: rgb(75, 81, 195);
+        transform: scale(1.01);   
+      }
+
+
+      .dropdown-menu123 {
+        max-height: 200px; /* Adjust the maximum height as needed */
+        overflow-y: auto; /* Add vertical scroll when content exceeds the height */
+      }

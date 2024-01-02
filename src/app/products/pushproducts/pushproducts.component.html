@@ -1,0 +1,251 @@
+<app-first-section item_active="Push Medicine"></app-first-section>
+
+  <!-- ========== tab components start ========== -->
+  <section class="tab-components">
+    <div class="container-fluid">
+
+      <from  [formGroup]="myForm" class="form-elements-wrapper">
+        <div class="row">
+
+          <div class="col-lg-6" >
+            <!-- input style start -->
+            <div class="card-style mb-30">
+
+
+                <div class="input-style-1">
+                    <label>Product Name</label>
+                    <input formControlName="name"
+                     type="text" placeholder="Product Name" (input)="onFieldChange('name', myForm.get('name')?.value)" />
+
+                    <div style="margin-left: 8%;"
+                     *ngIf="myForm.get('name')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">Name is required.</p>
+                    </div>
+                </div>
+
+
+              <div class="input-style-1">
+                <label>Description</label>
+                <textarea placeholder="Description" rows="1"
+                formControlName="description" (input)="onFieldChange('notes', myForm.get('description')?.value)"
+                ></textarea>
+
+                <div style="margin-left: 8%;"
+                     *ngIf="myForm.get('description')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">Description is required.</p>
+                </div>
+
+              </div>
+
+
+              <div class="input-style-1">
+                <label for="mgInput">Select Variants:</label>
+               
+
+                <!-- this div here includes the variant input + type + btn add -->
+                <div id="variantsDIV" class="input-group">
+
+                  <input type="number" id="mgInput" class="form-control" min="1" formControlName="variant" (keyup.enter)="addDosage()" />
+                
+                  <div class="custom-select-wrapper">
+                    <select id="variantSelections" class="form-select" formControlName="unit">
+                      <option selected value="mg">mg</option>
+                      <option value="g">g</option>
+                      <option value="kg">kg</option>
+                    </select>
+                    <div class="arrow-down"></div>
+                  </div>
+                
+                  <a class="main-btn primary-btn btn-hover" (click)="addDosage()" id="addVariant">Add</a>
+                
+                </div>
+                
+
+                <div *ngIf="messageDosageEmpty ">
+                  <p class="text-danger">variant is empty.</p>
+                </div>
+
+                <div *ngIf="dosageAlreadyExist">
+                  <p class="text-danger">variant is exist.</p>
+                </div>
+              </div>
+
+              <div class="row" style="margin-bottom: 5px;">
+                <ul>
+
+                  <li class="col-8" *ngFor="let dosage of dosages; let i = index">
+                    <div class="dosage-item">
+                      {{ dosage }}
+                        <div class="clearbutton-container">
+                            <span (click)="clearButton(i)"
+                            style="font-size: 20px; cursor: pointer;"
+                            class="text-danger ms-3 clearbutton">x</span>
+                        </div>
+                    </div>
+                  </li>
+
+                </ul>
+                <div style="margin-left: 8%;"
+                	 *ngIf="dosages.length == 0  && isSomethingEmpty ">
+                 <p class="text-danger">Variants is required, At least add one.</p>
+               </div>
+              </div>
+
+
+              <div class="input-style-1">
+                <label>Quantity</label>
+                <input type="number" min="0" placeholder="0"
+                formControlName="quantity" (input)="onFieldChange('quantity', myForm.get('quantity')?.value)" />
+              </div>
+              <!-- end input -->
+              <div style="margin-left: 8%;"
+                     *ngIf="myForm.get('quantity')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">Quantity is required.</p>
+                </div>
+            </div>
+
+          </div>
+
+
+
+
+          
+          <div class="col-lg-6">
+            <!-- ======= textarea style start ======= -->
+    
+          
+            <div class="card-style mb-30">
+
+
+              
+     <div class="select-style-1">
+                
+      <label class="categoryName">Category</label>
+
+      <div class="row" id="row-category">
+
+                <div class="col-9">
+                    <div class="select-position">            
+                      <select formControlName="category">
+
+                        <option selected disabled value="">Select category</option>
+
+
+
+                        <option *ngFor="let category of allCategoris" [value]="category.id">
+                            {{ category.category }}
+                        </option>
+
+
+                    </select>
+                    </div>
+                    
+                  </div>
+                               
+       <!-- Category section -->
+        <div class="col">
+          <a class="main-btn primary-btn btn-hover" (click)="addCategory()" id="addCategory">Add</a>
+        </div>
+
+
+                  </div>
+
+        <div *ngIf="messageCategoryEmpty"><p class="text-danger">Please select category first.</p></div>
+       <div *ngIf="categoryAleadyExist">   <p class="text-danger">Category already exist.</p></div>
+
+
+ <div class="row" style="margin-bottom: 5px;">
+
+                      <ul>
+
+                        <li class="col-8" *ngFor="let category of categories; let i = index">
+
+                          <div class="dosage-item"> {{ category.category }}
+                              <div class="clearbutton-container">
+                                  <span (click)="clearButtonCategory(i)" 
+                                  style="font-size: 20px; cursor: pointer;" 
+                                  class="text-danger ms-3 clearbutton">x</span>
+                              </div>
+                          </div>
+
+                        </li>
+
+                      </ul>
+
+
+                      <div style="margin-left: 8%;"
+                         *ngIf="categories.length == 0  && isSomethingEmpty ">
+                       <p class="text-danger">Categories is required, At least add one.</p>
+                     </div>
+                    </div>
+
+ </div>
+
+<div class="input-style-1">
+                    <label>Expiration Date</label>
+                    <input type="date"  formControlName="expirationDate"
+                    (input)="onFieldChange('expiryDate', myForm.get('expirationDate')?.value)"  />
+
+                    <div style="margin-left: 8%;"
+                       *ngIf="myForm.get('expirationDate')?.hasError('required')  && isSomethingEmpty ">
+                     <p class="text-danger">ExpiryDate is required.</p>
+               </div>
+                  </div>
+
+                  <div class="input-style-1">
+                    <label>Item Validity</label>
+                    <input type="number"  formControlName="itemValidity" min="1"
+                    (input)="onFieldChange('itemValidity', myForm.get('itemValidity')?.value)"  />
+
+
+                    <div style="margin-left: 8%;"
+                         *ngIf="item.itemValidity == 0 && isSomethingEmpty ">
+                      <p class="text-danger">Item validity required.</p>
+                    </div>
+                  </div>
+
+                <div class="select-style-1">
+                    <label>Location</label>
+                    <div class="select-position">
+                      <select formControlName="location" (change)="onFieldChange('location', myForm.get('location')?.value)" >
+                        <option disabled selected value="">Select location</option>
+                        <option >Location one</option>
+                        <option >Location two</option>
+                        <option >Location three</option>
+                      </select>
+                    </div>
+
+                    <div style="margin-left: 8%;"
+                        *ngIf="myForm.get('location')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">Location is required.</p>
+                   </div>
+                  </div>
+
+            </div>
+
+
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+
+
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <a id="pushBtn" (click)="insertProduct()" class="main-btn primary-btn btn-hover">
+                Push Product
+              </a>
+        </div>
+
+
+      <mat-progress-bar style="margin-top: 2%;" *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+      <p class="bg-success" style="margin-top: 2%; color: white;">{{message}}</p>
+      <p class="bg-danger" style="margin-top: 2%; color: white;">{{error}}</p>
+
+      </from>
+    </div>
+    <!-- end container -->
+  </section>
+
+
+
+

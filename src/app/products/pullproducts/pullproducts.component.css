@@ -1,0 +1,656 @@
+.container-fluid{
+  /* width: 100%; */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+    }
+
+
+
+
+
+#choosenMedCrad {
+  margin-bottom: 10px; /* Reduce the margin */
+  max-height: fit-content;
+  padding: 10px; /* Add some padding for spacing */
+  border: 1px solid #ddd; /* Add a border for separation */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  background-color: white; /* Add a light background color */
+}
+
+#choosenMedCrad .input-style-1 {
+  margin: 0;
+}
+
+#choosenMedCrad .product-name-toggle-container {
+  padding: 5px; /* Reduce the padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#choosenMedCrad .product-name-toggle-container input {
+  flex: 1; /* Take up available space */
+  margin-right: 5px; /* Add some spacing between inputs */
+}
+
+#choosenMedCrad .qtyBTN {
+  width: 60px; /* Adjust the width */
+}
+
+#choosenMedCrad .toggle-box {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+#choosenMedCrad .clearbutton {
+  margin-left: 10px; /* Add spacing between the "x" and dropdown indicator */
+}
+
+#choosenMedCrad .details-box {
+  margin-top: 10px; /* Add spacing between product and details */
+}
+
+#choosenMedCrad .select-position {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Adjust the gap between select and other elements */
+}
+
+#choosenMedCrad .select-style-1 {
+  margin-bottom: 5px; /* Add spacing between different sections */
+}
+
+#choosenMedCrad label {
+  margin-bottom: 5px; /* Add spacing below labels */
+}
+
+#choosenMedCrad select {
+  width: 100%; /* Make the select fill the available width */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn-close:hover{
+  color: red;
+}
+
+
+#SaveBtn {
+    padding: 10px 20px;
+    border: 1px solid rgb(37, 47, 224);
+    box-shadow: 0 2px 4px rgba(4, 15, 223, 0.6);  
+    background: rgb(37, 47, 224);
+    color: white;
+    text-align: center;
+    transition: transform 0.1s ease;
+}
+
+#SaveBtn:hover {
+  border: 1px solid rgb(75, 81, 195); /* Add border for a 3D effect */
+  background: rgb(75, 81, 195);
+  transform: scale(1.01);   
+}
+
+/* ========== RIGHT column ========== */
+
+
+
+/* ========== right column : file Upload ========== */
+
+  /* this is the input for the client file */
+.custom-uploader {
+    background-color: #efefef;
+    padding: 10px;
+    border-radius: 20px;
+  }
+  
+  /* this is the input for the client file */
+input[type=file] {
+    padding: 4px;
+    margin: -4px;
+    position: relative;
+    outline: none;
+
+  }
+
+ /* this is the label for the input (client file) */
+  .label{
+    margin-bottom: 10px;
+    color: rgb(126, 126, 231);
+  }
+
+  /* this is the input for the client file */
+input[type=file]::file-selector-button {
+    border-radius: 10px;
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(255, 252, 252, 0.16);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    /*
+      This is a hack to change the button label. 
+      I'm hiding the default label and then manually applying the width based on updated icon and label.
+    */
+    width: 132px;
+    color: transparent;
+    /*
+   Firefox doesn't support the pseudo ::before  or ::after elements on this input field 
+   so we need to use the @supports rule to enable default styles fallback for Firefox.
+    */
+  }
+
+@supports (-moz-appearance: none) {
+    input[type=file]::file-selector-button {
+      color: var(--primary-color);
+    }
+  }
+
+  input[type=file]::file-selector-button:hover {
+    background-color: #d4d4d4;
+  }
+
+  input[type=file]::file-selector-button:active {
+    background-color: #e5e7eb;
+  }
+
+  input[type=file]::before {
+    position: absolute;
+    pointer-events: none;
+    top: 14px;
+    left: 16px;
+    height: 20px;
+    width: 20px;
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+  }
+
+  input[type=file]::after {
+    position: absolute;
+    pointer-events: none;
+    top: 16px;
+    left: 40px;
+    color: var(--primary-color);
+    content: "Upload File";
+  }
+
+  input[type=file]:focus-within::file-selector-button, input[type=file]:focus::file-selector-button {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========== right column : Add new Consumer btn & Pull btn ========== */
+#pullButton {
+    padding: 10px 50px;
+      /* margin-right: 10px; */
+      border: 1px solid rgb(37, 47, 224);/* Add border for a 3D effect */
+      box-shadow: 0 2px 4px rgba(4, 15, 223, 0.6);  
+      /* primary-btn btn-hover w-100 text-center */
+      background: rgb(37, 47, 224);
+      color: white;
+      text-align: center;
+      width: 40%;
+      transition: transform 0.1s ease;
+  }
+
+#pullButton:hover {
+    border: 1px solid rgb(75, 81, 195); /* Add border for a 3D effect */
+    background: rgb(75, 81, 195);
+    transform: scale(1.01);
+     }
+
+#AddNewConsumerBtn {
+  padding: 10px 50px;
+    /* margin-right: 10px; */
+    border: 1px solid rgb(37, 47, 224);/* Add border for a 3D effect */
+    box-shadow: 0 2px 4px rgba(4, 15, 223, 0.6);  
+    /* primary-btn btn-hover w-100 text-center */
+    background: rgb(37, 47, 224);
+    color: white;
+    text-align: center;
+    width: 30%;
+    transition: transform 0.1s ease;
+}
+
+#AddNewConsumerBtn:hover {
+  border: 1px solid rgb(75, 81, 195); /* Add border for a 3D effect */
+  background: rgb(75, 81, 195);
+  transform: scale(1.01);   
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ========== LEFT column ========== */
+
+/* ========== Add New Medicine link ========== */
+#medicineButton {
+    cursor: pointer;
+    color: rgb(126, 126, 237);
+    padding: 10px 50px;
+    margin-right: 10px;
+    transition: transform 0.2s ease;
+  }
+
+#medicineButton:hover {
+    /* cursor: pointer; */
+    color: blue;
+    transform: scale(1.04);
+    text-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
+  }
+
+
+
+
+
+
+/* ========== Add New Medicine link : when opened ========== */
+#TableSelectedMedicines{
+    margin-left: 10px;
+    
+  }
+
+
+#TableSelectedMedicines #title1 {
+    font-weight: bold;
+    color: blue;
+    font-size: 15px;
+
+}
+ 
+.clearbutton-container {
+  display: inline-block; /* or use flex or inline-flex */
+}
+
+.clearbutton {
+  color: red;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.clearbutton:hover {
+  color: lightcoral; /* Adjust the color as needed */
+}
+
+
+
+#Divider{
+  display: flex;
+}
+
+
+
+
+/* toggle btn --> show more */
+.toggle-box {
+    color: rgb(139, 139, 228);
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px; /* Adjust the margin as needed */
+    border-style: none;
+    transition: color 0.3s ease; /* Add transition property for smooth color change */
+}
+
+.toggle-box:hover {
+    color: blue;
+}
+
+.details-content {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+/* the box showing content */
+
+/* Content box animation */
+.details-box {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out; /* Add transition for smooth height change */
+}
+
+/* Show content when showDetails is true */
+.details-box.active {
+    max-height: 500px; /* Set a reasonable max-height value */
+}
+
+
+
+
+
+
+
+
+
+
+/* Add this to your component's CSS file or your global styles */
+.modal-open .modal {
+    overflow-y: hidden !important;
+    
+}
+
+/* .modal-open .modal-dialog {
+    max-height: 100vh !important;
+} */
+
+.modal-open .modal-body {
+    /* max-height: calc(100vh - 150px) !important; */
+    /* height: 100vh; */
+    /* overflow-y: auto !important; */
+
+ 
+}
+
+.modal-body {
+   overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+
+}
+
+/* Add this to your component's CSS file or your global styles */
+.modal {
+    overflow: hidden !important;
+}
+
+
+.modal-dialog {
+     min-width:80%; 
+}
+
+
+
+
+
+
+
+
+
+
+.product-name-toggle-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 5%;
+}
+
+.toggle-box {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-box .clearbutton {
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 5px; /* Adjust margin as needed */
+}
+
+.dropdown-indicator {
+  font-size: 18px; /* Adjust size as needed */
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+/* responsive css */
+@media only screen and (max-width: 1000px) {
+    #Divider {
+        display: block; /* Change to block for responsiveness */
+    }
+
+    #medicinesComponent {
+        width: 100%;
+    }
+
+    #TableSelectedMedicines {
+        width: 100%;
+        margin-left: 0;
+    }
+
+}
+
+
+
+
+
+/* responsive css */
+@media only screen and (max-width: 780px) {
+
+  /* .container-fluid{
+ width: 100%; 
+margin: 0;
+padding: 0;
+overflow: hidden;
+  } */
+
+/* 
+  #choosenMedCrad {
+    width: 100%; 
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  } */
+
+
+section .card-style .mb-30 .col-lg-12{
+margin: 0;
+padding: 0;
+width: 100%;
+overflow: hidden;
+  }
+
+  .tab-components{
+    width: 100%;
+  }
+
+  .card-style{
+    width: 95%;
+    max-width: none;
+  }
+
+  .modal-dialog{
+    width: 95%;
+    max-width: none;
+}
+
+#pullButton {
+  font-size: 15px;
+  padding: 5px;
+}
+
+#AddNewConsumerBtn {
+    padding: 5px;
+    font-size: 15px;
+    text-align: center;
+    width: fit-content;
+    transition: transform 0.1s ease;
+  }
+
+
+/* .col-lg-7 {
+  width: 95%;
+    max-width: none;
+} */
+
+#medicineButton {
+  color: rgb(5, 5, 126);
+  margin-bottom: 15px;
+ align-items: center;
+ border-radius: 10px;
+  transition: transform 0.2s ease;
+  border-style: solid;
+  padding: 10px;
+  background: #d5d5d5;
+  border-color: #d5d5d5;
+}
+
+#medicineButton:hover {
+  /* cursor: pointer; */
+  color: blue;
+  transform: scale(1.04);
+  box-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
+}
+
+}
+
+
+
+
+
+
+
+
+/* responsive css */
+@media only screen and (max-width:490px) {
+
+
+  #choosenMedCrad {
+    padding: 2px;
+  }
+
+  #nameInput{
+width:120px;
+margin-right: 5px;
+margin-left: 5px;
+  }
+
+  #qtyInput{
+    width: 80px;
+  }
+
+  .toggle-box{
+    width: 100%;
+  }
+
+  .toggle-box  .dropdown-indicator{
+    margin-right: 15px;
+  }
+
+
+
+
+
+
+
+  /* this is the input for the client file */
+  .custom-uploader {
+    padding: 8px;
+    width: 100%;
+    border-radius: 20px;
+  }
+  
+  /* this is the input for the client file */
+  input[type=file] {
+    padding: 4px;
+    margin: -4px;
+    position: relative;
+    outline: none;
+  }
+
+
+  /* this is the input for the client file */
+  input[type=file]::file-selector-button {
+    padding: 0;
+    height: 40px;
+    margin-right: 16px;
+    width: 45px;
+  }
+
+  input[type=file]::before {
+    position: absolute;
+    pointer-events: none;
+    top: 14px;
+    left: 16px;
+    height: 20px;
+    width: 20px;
+   }
+
+  
+  input[type=file]::after {
+    content: "";
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

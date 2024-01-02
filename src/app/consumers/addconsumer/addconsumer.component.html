@@ -1,0 +1,99 @@
+<app-first-section item_active="Add Consumer"></app-first-section>
+
+<!-- ========== tab components start ========== -->
+  <section class="tab-components" style="margin-top: 1%;">
+    <div class="container-fluid">
+    
+      <form [formGroup]="myForm" class="form-elements-wrapper">
+        <div class="row">
+          <div class="col-lg-6">
+            <!-- input style start -->
+            <div class="card-style mb-30">
+        
+
+                <div class="input-style-1">
+                    <label>Consumer name</label>
+                    <input  formControlName="name" type="text"
+                     placeholder="Consumer name" (input)="onFieldChange('name', myForm.get('name')?.value)"/>
+                     <div style="margin-left: 8%;" *ngIf="myForm.get('name')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">Name is required.</p>
+                    </div>
+                  </div>
+
+
+                  <div class="input-style-1">
+                    <label>Date Of Birth</label>
+                    <input type="date" formControlName="dateofbirth"
+                     (input)="onFieldChange('birthdate', myForm.get('dateofbirth')?.value)"/>
+                     <div style="margin-left: 8%;" *ngIf="myForm.get('dateofbirth')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">DateOfBirth is required.</p>
+                    </div>
+                  </div>
+
+                  <div class="input-style-1">
+                    <label>Phone number</label>
+                    <input type="text" placeholder="Phone number" formControlName="phoneNumber"
+                    (input)="onFieldChange('phoneNumber', myForm.get('phoneNumber')?.value)"/>
+                    <div style="margin-left: 8%;" *ngIf="myForm.get('phoneNumber')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">Phone number is required.</p>
+                    </div>
+                  </div>
+
+
+                  <div class="input-style-1">
+                    <label>Location</label>
+                    <input type="text" placeholder="Location" formControlName="location"
+                    (input)="onFieldChange('location', myForm.get('location')?.value)"/>
+
+                    <div style="margin-left: 8%;" *ngIf="myForm.get('location')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">Location is required.</p>
+                    </div>
+                  </div>
+
+            </div>
+         
+          </div>
+          <!-- end col -->
+          <div class="col-lg-6">
+            <!-- ======= textarea style start ======= -->
+            <div class="card-style mb-30">
+                <div>
+                    <label class="label">Upload document</label>
+
+                    <div class="custom-uploader">
+                        <input type="file" accept=".docx,.pdf,image/*"  (change)="handleFileInput($event)"/>
+                    </div>
+
+                    <div style="margin-left: 8%;" *ngIf="myForm.get('documents')?.hasError('required')  && isSomethingEmpty ">
+                      <p class="text-danger">Document is required.</p>
+                    </div>
+                </div>
+               
+            </div>
+
+           
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+
+ 
+        <div style="display: flex; align-items: center; justify-content: center; margin-top: 2%;">
+            <button id="addConsumerBtn" (click)="addConsumer()" class="main-btn primary-btn btn-hover">
+                Add consumer
+              </button>
+        </div>
+      
+      </form>
+
+          
+          <mat-progress-bar style="margin-top: 2%;" *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
+          <p  class="bg-success" style="margin-top: 2%; color: white;">{{message}}</p>
+        
+          <!-- <a *ngIf="showBtnBack" style="margin-left: 2%; margin-top: 2%"   routerLink="/products/pull">back to pull</a> -->
+      </div>
+    <p  class="bg-danger" style="margin-top: 2%; color: white;" *ngIf="!showProgressBar">{{error}}</p>
+
+
+    <!-- end container -->
+  </section>

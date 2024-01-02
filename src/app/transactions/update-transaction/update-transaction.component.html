@@ -1,0 +1,66 @@
+
+<app-first-section item_active="Pull Update Transaction"></app-first-section>
+
+
+        <div class="container-fluid">
+        
+          <div class="form-elements-wrapper">
+            <div class="row">
+              <div class="col-lg-10">
+                <!-- input style start -->
+                <div class="card-style mb-30">
+            
+    
+                    <div class="input-style-1">
+                        <label>Medicine Name</label>
+                        <input readonly type="text" 
+                        (input)="onFieldChange('item', myForm.get('item')?.value)" />
+                      </div>
+    
+                      <div class="input-style-1">
+                        <label>Consumer Name</label>
+                        <input readonly type="text" 
+                        (input)="onFieldChange('consumer', myForm.get('consumer')?.value)" />
+                      </div>
+    
+                      <div class="input-style-1">
+                        <label>Quantity</label>
+                        <input type="text"
+                        (input)="onFieldChange('item', myForm.get('item')?.value)" />
+                      </div>
+
+                      <!-- <div class="input-style-1">
+                        <label>Date</label>
+                        <input type="date" />
+                      </div> -->
+    
+                      <div class="input-style-1">
+                        <label>Type</label>
+                        <input readonly type="text"
+                        (input)="onFieldChange('transactionType', myForm.get('transactionType')?.value)" />
+                      </div>
+    
+                       <!-- ======= Patient Report ======= -->
+                <div class="input-style-1">
+                  <label class="label">Upload patient report</label>
+                   <div class="custom-uploader"> <input type="file"
+                         (change)="handleFileInput($event)"/> </div>
+                </div>
+
+    
+<div style="display: flex; align-items: center; justify-content: center; margin-top: 2%;">
+             <a id="updatetransactionBTN" class="main-btn primary-btn btn-hover" (click)="updatePullTransaction()"> 
+              Update Transaction</a>
+</div>
+      
+
+</div>       
+      </div>
+            </div>
+            <!-- end row -->
+    
+     
+     
+          
+          </div>
+        </div>

@@ -1,0 +1,61 @@
+.variantSelect {
+    width: 100%;
+    background: rgba(239, 239, 239, 0.5);
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 16px;
+    color: #5d657b;
+    resize: none;
+    transition: all 0.3s;
+  }
+
+
+  #ViewAll {
+    color: blue;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  #ViewAll:hover {
+ /* cursor: pointer; */
+ color: blue;
+ transform: scale(1.04);
+ text-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
+  }
+
+
+  .progress-container {
+    width: 100%;
+    background-color: #f0f0f0;
+    height: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    transition: width 0.3s ease;
+  }
+
+
+
+  #DateA:hover{
+    color: rgb(5, 5, 188);
+  }
+
+
+/* Add this CSS in your styles.scss or component-specific CSS file */
+.clickable-row {
+  cursor: pointer;
+}
+
+/* Assuming a class "clickable-row" is added to each row */
+::ng-deep .table tbody tr.clickable-row:hover {
+  background-color: #dadada;
+  cursor: pointer;
+}

@@ -1,0 +1,218 @@
+
+<aside class="sidebar-nav-wrapper">
+
+  <nav class="sidebar-nav">
+
+    <!-- <div class="navbar-logo">
+      <a (click)="moveToRoute('/home')">
+        <img src="./assets/images/logo/عطاء-1.png" alt="logo" />
+      </a>
+    </div>  -->
+
+    <ul>
+
+      <li style="display: flex; align-items: center; justify-content:center ;">
+        <a (click)="moveToRoute('/home')">
+          <img id="logoImg" src="./assets/images/logo/logo_new_.png" alt="logo" />
+        </a>
+      </li>
+
+
+      <li class="nav-item">
+
+        <a
+          style="cursor:pointer"
+          (click)="moveToHome()" [class.active]="isActive('')"
+          class="active"
+          >
+
+              <span class="icon" [class.active]="isActive('')" (click)="moveToRoute('')">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M8.74999 18.3333C12.2376 18.3333 15.1364 15.8128 15.7244 12.4941C15.8448 11.8143 15.2737 11.25 14.5833 11.25H9.99999C9.30966 11.25 8.74999 10.6903 8.74999 10V5.41666C8.74999 4.7263 8.18563 4.15512 7.50586 4.27556C4.18711 4.86357 1.66666 7.76243 1.66666 11.25C1.66666 15.162 4.83797 18.3333 8.74999 18.3333Z" />
+                  <path
+                    d="M17.0833 10C17.7737 10 18.3432 9.43708 18.2408 8.75433C17.7005 5.14918 14.8508 2.29947 11.2457 1.75912C10.5629 1.6568 10 2.2263 10 2.91665V9.16666C10 9.62691 10.3731 10 10.8333 10H17.0833Z" />
+                </svg>
+              </span>
+              Dashboard
+        </a>
+      </li>
+
+
+   <!-- Transactions  -->
+      <li class="nav-item nav-item-has-children">
+
+        <a
+        style="cursor: pointer;"
+          class="collapsed"
+          data-bs-toggle="collapse"
+          data-bs-target="#ddmenu_2"
+          aria-controls="ddmenu_2"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+              <span class="icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21,9L17,5V8H10V10H17V13M7,11L3,15L7,19V16H14V14H7V11Z" />
+              </svg>
+              </span>
+          <span class="text">transactions</span>
+        </a>
+        <ul id="ddmenu_2" class="collapse dropdown-nav">
+          <li *ngIf="hidePushMedicineSection()">
+            <a style="cursor: pointer" [class.active]="isActive('/transactions/push')" (click)="moveToRoute('/transactions/push')">Push Transactions </a>
+          </li>
+          <li *ngIf="hidePullMedicineSection()">
+            <a style="cursor: pointer" [class.active]="isActive('/transactions/pull')" (click)="moveToRoute('/transactions/pull')">Pull Transactions </a>
+          </li>
+
+        </ul>
+      </li>
+
+   <!-- medicine  -->
+      <li class="nav-item nav-item-has-children">
+        <a
+        style="cursor: pointer;"
+          class="collapsed"
+          data-bs-toggle="collapse"
+          data-bs-target="#ddmenu_3"
+          aria-controls="ddmenu_3"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+              <span class="icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M4.22,11.29L11.29,4.22C13.64,1.88 17.43,1.88 19.78,4.22C22.12,6.56 22.12,10.36 19.78,12.71L12.71,19.78C10.36,22.12 6.56,22.12 4.22,19.78C1.88,17.43 1.88,13.64 4.22,11.29M5.64,12.71C4.59,13.75 4.24,15.24 4.6,16.57L10.59,10.59L14.83,14.83L18.36,11.29C19.93,9.73 19.93,7.2 18.36,5.64C16.8,4.07 14.27,4.07 12.71,5.64L5.64,12.71Z" />
+                </svg>
+              </span>
+          <span class="text">Medicines</span>
+        </a>
+        <ul id="ddmenu_3" class="collapse dropdown-nav">
+          <!-- <li>
+            <a style="cursor: pointer" (click)="moveToRoute('/products/all')" [class.active]="isActive('/products/allproducts')"> Medicines </a>
+          </li> -->
+
+          <li>
+            <a style="cursor: pointer" (click)="moveToRoute('/products/all')" [class.active]="isActive('/products/all')"> Medicines </a>
+          </li>
+
+          <li *ngIf="hidePushMedicineSection()">
+            <a style="cursor: pointer" (click)="moveToRoute('/products/push')" [class.active]="isActive('/products/push')"> Push Medicine </a>
+          </li>
+
+          <li *ngIf="hidePullMedicineSection()">
+            <a style="cursor: pointer" (click)="moveToRoute('/products/pull')" [class.active]="isActive('/products/pull')"> Pull Medicine </a>
+          </li>
+
+        </ul>
+      </li>
+
+   <!-- auth  -->
+      <li class="nav-item nav-item-has-children">
+        <a
+        style="cursor: pointer;"
+          class="collapsed"
+          data-bs-toggle="collapse"
+          data-bs-target="#ddmenu_4"
+          aria-controls="ddmenu_4"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+              <span class="icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M16.5,12A2.5,2.5 0 0,0 19,9.5A2.5,2.5 0 0,0 16.5,7A2.5,2.5 0 0,0 14,9.5A2.5,2.5 0 0,0 16.5,12M9,11A3,3 0 0,0 12,8A3,3 0 0,0 9,5A3,3 0 0,0 6,8A3,3 0 0,0 9,11M16.5,14C14.67,14 11,14.92 11,16.75V19H22V16.75C22,14.92 18.33,14 16.5,14M9,13C6.67,13 2,14.17 2,16.5V19H9V16.75C9,15.9 9.33,14.41 11.37,13.28C10.5,13.1 9.66,13 9,13Z" />
+                </svg>
+              </span>
+          <span class="text">consumers</span>
+        </a>
+        <ul id="ddmenu_4" class="collapse dropdown-nav">
+          <li>
+            <a style="cursor: pointer" (click)="moveToRoute('/consumers/all')" [class.active]="isActive('/consumers/all')"> Consumers </a>
+          </li>
+          <li>
+            <a style="cursor: pointer" (click)="moveToRoute('/consumers/new')" [class.active]="isActive('/consumers/new')"> Add Consumers </a>
+          </li>
+
+        </ul>
+      </li>
+
+
+   <!-- users  -->
+      <li class="nav-item" *ngIf="hideUsersSection()">
+        <a style="cursor: pointer;" [class.active]="isActive('/SuperAdmin/all')" (click)="moveToRoute('/SuperAdmin/all')">
+              <span class="icon" [class.active]="isActive('/SuperAdmin/all')">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 8C6 5.79 7.79 4 10 4S14 5.79 14 8 12.21 12 10 12 6 10.21 6 8M12 18.2C12 17.24 12.5 16.34 13.2 15.74V15.5C13.2 15.11 13.27 14.74 13.38 14.38C12.35 14.14 11.21 14 10 14C5.58 14 2 15.79 2 18V20H12V18.2M22 18.3V21.8C22 22.4 21.4 23 20.7 23H15.2C14.6 23 14 22.4 14 21.7V18.2C14 17.6 14.6 17 15.2 17V15.5C15.2 14.1 16.6 13 18 13C19.4 13 20.8 14.1 20.8 15.5V17C21.4 17 22 17.6 22 18.3M19.5 15.5C19.5 14.7 18.8 14.2 18 14.2C17.2 14.2 16.5 14.7 16.5 15.5V17H19.5V15.5Z" />
+                </svg>
+              </span>
+              Users
+        </a>
+      </li>
+
+
+ <!-- divider & logout  -->
+      <span class="divider"><hr /></span>
+
+
+      <li class="nav-item">
+        <a style="cursor: pointer;">
+              <span class="icon">
+                <i width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="lni lni-exit">
+                </i>
+              </span>
+          <span (click)="logout()" class="text">logout</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+</aside>
+
+<div class="overlay" (click)="closeSidebar()"></div>
+
+
+<script>
+  let sidebar = document.querySelector(".sidebar")
+
+document.querySelector('.open').onclick = e => {
+  sidebar.style.display = "block"
+  e.stopPropagation()
+}
+
+document.body.addEventListener("click", e => sidebar.style.display = "none")
+</script>
+
+
+
+
+
+<!-- function for the side bar to close when pressing anywhere outside it -->
+
+<!-- <script>
+  console.log('gg')
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const sidebar = document.querySelector('.sidebar-nav-wrapper');
+    const sidebarToggleBtn = document.querySelector('.sidebar-toggle-btn');
+
+    document.addEventListener('click', function (event) {
+      const clickedElement = event.target;
+      console.log('Document clicked');
+      // Check if the clicked element is the sidebar or the toggle button
+      if ( !sidebar.contains(clickedElement) && !sidebarToggleBtn.contains(clickedElement) ) {
+        // Close the sidebar
+        sidebar.classList.remove('open');
+      }
+    });
+
+    // Add an event listener to the sidebar toggle button
+    sidebarToggleBtn.addEventListener('click', function () {
+      console.log('Toggle button clicked');
+      // Toggle the 'open' class to show/hide the sidebar
+      sidebar.classList.toggle('open');
+    });
+  });
+</script>  -->
+
+
+

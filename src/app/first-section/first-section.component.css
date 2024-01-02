@@ -1,0 +1,13 @@
+/* pull link in table */
+
+#medDashboard {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  #medDashboard:hover {
+    /* cursor: pointer; */
+    color: blue;
+    transform: scale(1.04);
+    text-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
+  }
